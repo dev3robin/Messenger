@@ -1,0 +1,193 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        /* Reset some default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .todo-form {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .inputValue {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .inputValue:focus {
+            border-color: #007bff;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .todolist {
+            list-style-type: none;
+        }
+
+        .todolist li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .todolist li:hover {
+            background-color: #f1f1f1;
+        }
+
+        .delete-btn {
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .delete-btn:hover {
+            background-color: #e63946;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <form class="todo-form">
+            <input type="text" class="inputValue" placeholder="Add a new to-do">
+            <button type="submit" class="btn">Add</button>
+        </form>
+        <ul class="todolist"></ul>
+    </div>
+
+    <script>
+        const todolist = document.querySelector(".todolist");
+        const inputField = document.querySelector(".inputValue");
+        let todoListValue = [];
+
+        // Add value to local storage
+        const addValuelocalstorage = (todo) => {
+            try {
+                localStorage.setItem("items", JSON.stringify(todo));
+            } catch (error) {
+                console.error("Error saving to localStorage:", error);
+            }
+        }
+
+        // Get value from local storage
+        const getValuelocalStorages = () => {
+            try {
+                return JSON.parse(localStorage.getItem("items")) || [];
+            } catch (error) {
+                console.error("Error reading from localStorage:", error);
+                return [];
+            }
+        }
+
+        // Render the list of todos
+        const showTodo = () => {
+            todoListValue = getValuelocalStorages();
+            todolist.innerHTML = ""; // Clear the current list before rendering
+            todoListValue.forEach(todo => {
+                const lielement = document.createElement("li");
+                lielement.innerHTML = `${todo} <button class="delete-btn">Delete</button>`;
+                lielement.querySelector(".delete-btn").addEventListener("click", () => deleteTodo(todo));
+                todolist.append(lielement);
+            });
+        }
+
+        // Add new todo to the list
+        const addvalue = (e) => {
+            e.preventDefault();
+            let newtodo = inputField.value.trim();
+            if (newtodo.length !== 0) {
+                todoListValue = getValuelocalStorages();
+                todoListValue.push(newtodo);
+                addValuelocalstorage(todoListValue);
+                inputField.value = ""; // Clear the input field
+                showTodo(); // Re-render the updated list
+            }
+        }
+
+        // Delete a todo from the list
+        const deleteTodo = (todo) => {
+            todoListValue = todoListValue.filter(item => item !== todo);
+            addValuelocalstorage(todoListValue);
+            showTodo();
+        }
+
+        // Show existing todos when the page loads
+        showTodo();
+
+        // Add event listener to the button
+        document.querySelector(".btn").addEventListener('click', (e) => {
+            addvalue(e);
+        });
+
+        // Add an event listener for pressing Enter in the input field
+        inputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addvalue(e);
+            }
+        });
+    </script>
+</body>
+</html> -->
