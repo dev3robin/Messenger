@@ -1,14 +1,10 @@
 import React, { useState, useEffect,useContext } from 'react';
 import ProfileCard from "../profileCard";
 import Chatting from './chat-ui';;
-import { ProfileNavContext } from '../contextApi/profileNavContext';
-import ProfileNav from '../navSection/profileNav';
-
 function Chats() {
   const [userData, setUserData] = useState([]);
   const [selectedChat, setSelectedChat] = useState(null);
   const [isChatting,setIsChatting]=useState(false)
-  const { isProfileNav, setProfileNav } = useContext(ProfileNavContext);
   useEffect(() => {
     const storedUserData = localStorage.getItem('userData');
     if (storedUserData) {
@@ -48,11 +44,6 @@ function Chats() {
           chatData={selectedChat}
         />
       )}
-      {isProfileNav &&
-        <ProfileNav 
-          chatData={selectedChat}
-        />
-      }
     </div>
   );
 }

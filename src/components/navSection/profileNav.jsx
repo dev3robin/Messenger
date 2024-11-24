@@ -2,10 +2,10 @@ import ReactDOM from "react-dom";
 import ProfileCard from "../profileCard";
 import { useContext,useRef,useEffect } from "react";
 import { ProfileNavContext } from "../contextApi/profileNavContext";
-function ProfileNav(props){
-      const {chatData}=props
+function ProfileNav(){
       const { isProfileNav, setProfileNav } = useContext(ProfileNavContext);
       const profileNavRef = useRef(null);
+
       useEffect(() => {
         function handleClickOutside(event) {
           if (profileNavRef.current && !profileNavRef.current.contains(event.target)) {

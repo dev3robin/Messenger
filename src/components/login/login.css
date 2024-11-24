@@ -50,7 +50,10 @@ form input{
 
 }
 .info-div{
-      margin-top: 10px;
+      margin-top: 5px;
+      font-size: .8rem;
+      display: flex;
+      align-items: center;
 }
 header {
       margin: 10px 0px;
@@ -77,8 +80,29 @@ header {
 }
 .signup-btn{
       margin-bottom: 10px;
+      color: var(--dark-mode-txt-color);
 }
 .recoverpass-btn{
       background-color: transparent;
+      color: var(--dark-mode-txt-color);
+}
+.sucard_btn{
+      margin-top: 15px;
+      margin-bottom: 0;
+      color: var(--dark-mode-txt-color);
+}
+.or_span{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+}
+.or_span span{
+      margin: 0;
+      padding: 0;
+}
+.sucardL_btn{
+      margin-top: 0;
       color: var(--dark-mode-txt-color);
 }

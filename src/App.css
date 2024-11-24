@@ -8,7 +8,6 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-  /* padding: 0px 10px 0px 1rem; */
   color: white;
   display: flex;
   flex-direction: column;
@@ -147,7 +146,7 @@
   justify-content: center;
 }
 .storyCard{
-  width: 150px;
+  width: 140px;
   height: 200px;
   border-radius: 10px;
   position: relative;
@@ -162,6 +161,9 @@
   background-color: transparent;
   gap: 10px;
   width: fit-content;
+  box-sizing: border-box;
+  padding-left: 5px;
+
 }
 .main-story{
   display: flex;
@@ -218,7 +220,8 @@
   left: 0;
   right: 0;
   width: 100%;
-  padding: 10px 0px;
+  padding: 10px 5px;
+  box-sizing: border-box;
   position: relative;
 }
 .searchInput button{
@@ -242,7 +245,6 @@
   width: 100%;
   height: 63vh;
   gap: 5px;
-  padding-right: 15px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -257,6 +259,8 @@
   height: 100%;
   width: 100%;
   gap: 10px;
+  padding: 0px 5px;
+  box-sizing: border-box;
 
 }
 .rs-bar{
@@ -289,6 +293,8 @@
   flex-direction: column;
   gap: 15px;
   padding-top: 10px;
+  box-sizing: border-box;
+  padding: 0px 10px;
 }
 .su-container{
   display: flex;
@@ -365,7 +371,6 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  padding: 0px 10px 0px 1rem;
   transform: translate(-50%,-50%);
   color: white;
   display: flex;
@@ -374,6 +379,7 @@
   align-items: start;
   justify-content: start;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .chatProfile{
   background-color: rgb(0, 0, 0);
@@ -384,7 +390,6 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  padding: 0px 10px 0px 1rem;
   transform: translate(-50%,-50%);
   color: white;
   display: flex;
@@ -393,6 +398,7 @@
   align-items: start;
   justify-content: start;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .searching{
   background-color: black;
@@ -403,7 +409,6 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  padding: 0px 10px 0px 1rem;
   transform: translate(-50%,-50%);
   color: white;
   flex-direction: column;
@@ -412,7 +417,9 @@
   justify-content: start;
   display: none;
   padding-bottom: 1px;
+  box-sizing: border-box;
 }
+
 .isActive{
   display: flex;
   z-index: 1200;
@@ -425,13 +432,24 @@
   gap: 5px;
   margin-top: 1rem;
   align-items: center;
+  box-sizing: border-box;
+  padding-left: 5px;
+}
+.msg{
+  display: flex;
+  align-items: end;
+  margin: 0px 5px ;
+  box-sizing: border-box;
 }
 .bottom-layer{
   display: flex;
   position: absolute;
   bottom: 0;
+  gap: 6px;
+  margin: 0px 5px;
   margin-bottom: 1rem;
-  gap: 10px;
+  box-sizing: border-box;
+
 
 }
 .user-detail-div{
@@ -568,6 +586,8 @@
   justify-content: space-between;
   background-color: black;
   position:relative;
+  padding: 0px 5px;
+  box-sizing: border-box;
 }
 .userProfile{
   display: flex;
@@ -605,6 +625,8 @@
   flex-direction: column;
   gap: 1.4rem;
   width: 100%;
+  padding: 0px 10px;
+  box-sizing: border-box;
 }
 .cp-details::-webkit-scrollbar{
   display: none;

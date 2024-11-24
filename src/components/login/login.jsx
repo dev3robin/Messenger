@@ -1,21 +1,48 @@
 import ReactDOM from "react-dom";
 import React, { useState } from "react";
+import LoginCard from "./loginCard";
+import SignupCard from "./signupCard";
 
-function Login() {
+function Login(props) {
+  const {isLogin,setLogin}=props
+  const [userName,setUserName]=useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSignUp,setSignUp]=useState(false)
+  function handleUserNameChange(e){
+    setUserName(e.target.value)
+  }
+  function handleEmailChange(e){
+    setEmail(e.target.value)
+  }
+  function handlePasswordChange(e){
+    setPassword(e.target.value)
+  }
   return ReactDOM.createPortal(
     <div className="login-container">
-      <div><i class="fa-brands fa-facebook-messenger"></i></div>
-      <form action="">
-            <header>LogIn with your phone number or Facebook account </header>
-            <input type="Email" placeholder="Email"/>
-            <input type="password" placeholder="Password"/>
-            <div className="info-div"><input type="radio" name="" id="" />Save login info</div>
-            <button className="login-btn sbtn">Log In</button>
-            <button className="signup-btn sbtn">Create New Account</button>
-            <button className="recoverpass-btn sbtn">Forgotten Your Password</button>
-      </form>
+      {!isSignUp? 
+        <LoginCard 
+            handleEmailChange={handleEmailChange}
+            handlePasswordChange={handlePasswordChange}
+            email={email}
+            password={password}
+            setSignUp={setSignUp}
+            setLogin={setLogin}
+            isLogin={isLogin}
+          />
+          :
+          <SignupCard 
+          handleUserNameChange={handleUserNameChange}
+            handleEmailChange={handleEmailChange}
+            handlePasswordChange={handlePasswordChange}
+            setSignUp={setSignUp}
+            userName={userName}
+            setUserName={setUserName}
+            email={email}
+            password={password}
+          />
+      }
+      
 
     </div>,
     document.getElementById("loginPortal")
