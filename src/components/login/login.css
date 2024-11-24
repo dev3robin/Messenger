@@ -47,6 +47,8 @@ form input{
       padding: 15px 10px;
       border-radius: 10px;
       color: var(--dark-mode-txt-color);
+      margin-top: 8px;
+      border: 1px solid grey;
 
 }
 .info-div{
@@ -55,7 +57,7 @@ form input{
       display: flex;
       align-items: center;
 }
-header {
+form header {
       margin: 10px 0px;
       padding: 0px 20px;
       display: flex;
@@ -67,20 +69,22 @@ header {
       font-size: .9rem;
       font-family: Arial, Helvetica, sans-serif;
 }
+.login-btn{
+      background-color: #2880FE;
+}
 .sbtn{
-      background-color: var(--btn-color);
       border: none;
       outline: none;
       padding: 15px;
       border-radius: 25px;
 }
-.login-btn{
-      margin-top: 10px;
-      margin-bottom: 10px;
-}
+
 .signup-btn{
-      margin-bottom: 10px;
       color: var(--dark-mode-txt-color);
+      background-color: transparent;
+      border: 1px solid #2880FE;
+      color: #2880FE;
+      width: 100%;
 }
 .recoverpass-btn{
       background-color: transparent;
@@ -91,18 +95,71 @@ header {
       margin-bottom: 0;
       color: var(--dark-mode-txt-color);
 }
-.or_span{
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
 
-}
-.or_span span{
-      margin: 0;
-      padding: 0;
-}
 .sucardL_btn{
       margin-top: 0;
       color: var(--dark-mode-txt-color);
+}
+.fa-meta{
+      color: var(--dark-mode-txt-color);
+}
+header{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.5rem 0rem;
+}
+.custom-select {
+      position: relative;
+      width: fit-content;
+
+    }
+  
+.select-btn {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: transparent;
+      font-size: 16px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--dark-mode-txt-color);
+      border: none;
+      outline: none;
+      font-size: .7rem;
+    }
+  
+.select-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      width: fit-content;
+      border-radius: 5px;
+      background-color: rgba(0,0,0,.8);
+      display: none;
+      z-index: 10;
+      
+    }
+  
+.option {
+      padding: 10px;
+      cursor: pointer;
+      font-size: .7rem;
+    }
+  
+.option:hover {
+      background-color: grey;
+    }
+
+footer{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      width: 100%;
+      gap: 10px;
+      padding: 0px 10px;
+      box-sizing: border-box;
 }

@@ -2,10 +2,11 @@ import ReactDOM from "react-dom";
 import ProfileCard from "../profileCard";
 import { useContext,useRef,useEffect } from "react";
 import { ProfileNavContext } from "../contextApi/profileNavContext";
+import { UserD } from "../contextApi/user";
 function ProfileNav(){
       const { isProfileNav, setProfileNav } = useContext(ProfileNavContext);
       const profileNavRef = useRef(null);
-
+      const { User, setUser } = useContext(UserD);
       useEffect(() => {
         function handleClickOutside(event) {
           if (profileNavRef.current && !profileNavRef.current.contains(event.target)) {
@@ -22,8 +23,8 @@ function ProfileNav(){
                   <div className="profileNavMain" ref={profileNavRef}>
                         <div className="account-section">
                               <div className="ac-left-part" >
-                                    <div><ProfileCard size="40px"  /></div>
-                                    <div>username in api</div>
+                                    <div><ProfileCard size="40px" avatar={User?.avatar} /></div>
+                                    <div>{User?.userName}</div>
                                     <span><i class="fa-solid fa-angle-down"></i></span>
                               </div>
                               <div className="ac-right-part"><button className="setting-btn"><i class="fa-solid fa-gear"></i></button></div>

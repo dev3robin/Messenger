@@ -31,8 +31,8 @@ function Chats() {
             />
           </div>
           <div>
-            <div>{user.username}</div>
-            <div>Last message here</div>
+            <div className='uername'>{user.username}</div>
+            <div className='lastmsg'>Last message here</div>
           </div>
           <div className="noti-controler"><i class="fa-solid fa-bell-slash"></i></div>
         </div>

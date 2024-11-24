@@ -863,3 +863,10 @@
   background-color: #414141;
   transition: background-color 0.3s ease-in-out;
 }
+.uername{
+  font-size: 1.1rem;
+}
+.lastmsg{
+  font-size: .9rem;
+  color: grey;
+}
