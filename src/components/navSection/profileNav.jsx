@@ -23,7 +23,7 @@ function ProfileNav(){
                         <div className="account-section">
                               <div className="ac-left-part" >
                                     <div><ProfileCard size="40px"  /></div>
-                                    <div>username</div>
+                                    <div>username in api</div>
                                     <span><i class="fa-solid fa-angle-down"></i></span>
                               </div>
                               <div className="ac-right-part"><button className="setting-btn"><i class="fa-solid fa-gear"></i></button></div>
