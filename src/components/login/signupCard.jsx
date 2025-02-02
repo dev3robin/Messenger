@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { userDataContext } from "../contextApi/database";
+
 
 function SignupCard(props){
       const {
@@ -9,7 +9,6 @@ function SignupCard(props){
             email,
             userName,
             password,setSignUp}=props
-      const { login_signup_Data, setlogin_signup_Data } = useContext(userDataContext);
       function handleSignupClick(e){
             e.preventDefault();
             const newUserData = {

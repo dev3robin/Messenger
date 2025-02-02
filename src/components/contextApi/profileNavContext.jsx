@@ -1,6 +1,15 @@
-import { createContext } from "react";
+import React,{ createContext,useState } from "react";
 
 export const ProfileNavContext = createContext({
-  isProfileNav: false,
-  setProfileNav: () => {}
 });
+const ProfileNavProvider = ({ children }) => {
+  const [isProfileNav, setProfileNav] = useState(false);
+
+  return (
+    <ProfileNavContext.Provider value={{ isProfileNav, setProfileNav }}>
+      {children}
+    </ProfileNavContext.Provider>
+  );
+};
+
+export default ProfileNavProvider;

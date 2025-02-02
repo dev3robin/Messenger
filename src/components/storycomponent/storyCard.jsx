@@ -1,28 +1,35 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import ProfileCard from "../profileCard";
-
-
+import { UserD } from "../contextApi/user";
+import Messenger from "../data/data";
 function StoryCard(){
-      const [userData,setUserData]=useState([])
-      useEffect(()=>{
-            const storedUserData = localStorage.getItem('userData');
-            if (storedUserData) {
-                  setUserData(JSON.parse(storedUserData));
-            }
-      },[])
+        const { User } = useContext(UserD);
+        function getUserDataById(userId) {
+            const users=Object.values(Messenger).map(user=>{
+              return user
+            })
+            return users.find(user => user.userId === userId); // Locate the user by userId
+          }
       return (
             <div className="story-container">
-                  {userData.filter(user=>user.story===true)
-                  .map(user=>(
+            {User.friends.map(friend => {
+                  const userData = getUserDataById(friend.userId); 
+                  if (!userData || !userData.storyInfo.isStory) return null; // Skip if userId does not exist in Messenger
+                  return(
                         <div className="story-bg">
-                              <div className="storyCard"  key={user.id}>
-                                    <div className="main-story">content</div>
-                                    <div className="prfile-div"><ProfileCard size="35px" avatar={user.avatar}story={user.story} /></div>
+                              <div className="storyCard"  key={userData.userId}>
+                                    <div className="main-story"><img src={userData.storyInfo.stories} alt="" height="200px" width={140} /></div>
+                                    <div className="prfile-div">
+                                          <ProfileCard                                                 
+                                                avatar={userData.photos.profile}
+                                                size="35px" story={userData.story} 
+                                          />
+                                    </div>
                                     <div className="num_story">2</div>
-                                    <div className="username"><span>{user.username}</span></div>
+                                    <div className="storyC_username"><span>{userData.userName}</span></div>
                               </div>
                         </div>
-                  ))}
+                  )})}
             </div>
       )
 }

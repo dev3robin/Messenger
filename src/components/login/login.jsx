@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import LoginCard from "./loginCard";
 import SignupCard from "./signupCard";
-
-function Login(props) {
-  const {isLogin,setLogin}=props
+import { LoginInfo } from "../contextApi/loginInfo";
+function Login() {
+  const {isLogin,setLogin}=useContext(LoginInfo)
   const [userName,setUserName]=useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,8 +27,6 @@ function Login(props) {
             email={email}
             password={password}
             setSignUp={setSignUp}
-            setLogin={setLogin}
-            isLogin={isLogin}
           />
           :
           <SignupCard 

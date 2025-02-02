@@ -14,8 +14,8 @@ function ChatProfile(props){
                   <div className="cp-details">
                         <div className="chatProfile-section">
                               <div className="userProfile">
-                                    <ProfileCard size="80px" avatar={chatData.avatar}/>
-                                    <div className="userName">{chatData.username}</div>
+                                    <ProfileCard size="80px" avatar={chatData.photos.profile}/>
+                                    <div className="userName">{chatData.userName}</div>
                                     <button className="encryptBtn">
                                           <i class="fa-sharp fa-solid fa-lock"></i>
                                           <span>End-to-end encryption</span>

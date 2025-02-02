@@ -24,6 +24,7 @@
       overflow: visible;
       box-sizing: border-box;
       width: 100%;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 .fa-facebook-messenger{
       font-size: 6rem;
@@ -34,6 +35,7 @@
 form {
       display: flex;
       flex-direction: column;
+      align-items: center;
       background-color: var(--dark-color);
       width: 100%;
       padding: 0px 15px;
@@ -45,17 +47,30 @@ form input{
       border: none;
       outline: none;
       padding: 15px 10px;
-      border-radius: 10px;
+      border-radius: 15px;
       color: var(--dark-mode-txt-color);
       margin-top: 8px;
       border: 1px solid grey;
+      width: 92%;
 
 }
 .info-div{
-      margin-top: 5px;
-      font-size: .8rem;
       display: flex;
       align-items: center;
+      flex-direction: row;
+      justify-content: start;
+      font-size: .8rem;
+      width: 100%;
+      gap: 5px;
+      margin: 10px 0px;
+
+}
+.info-div input{
+      width: 10px;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin: 0
 }
 form header {
       margin: 10px 0px;
@@ -71,6 +86,7 @@ form header {
 }
 .login-btn{
       background-color: #2880FE;
+      width: 100%;
 }
 .sbtn{
       border: none;
@@ -114,9 +130,10 @@ header{
       width: fit-content;
 
     }
-  
+
 .select-btn {
       width: 100%;
+      min-width: 85px;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -128,8 +145,13 @@ header{
       border: none;
       outline: none;
       font-size: .7rem;
-    }
-  
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }        
+.select-options.show {
+      display: block;
+  }
 .select-options {
       position: absolute;
       top: 100%;
@@ -142,11 +164,14 @@ header{
       z-index: 10;
       
     }
-  
+.showOption{
+      display: block;
+}
 .option {
       padding: 10px;
       cursor: pointer;
       font-size: .7rem;
+      flex-wrap: nowrap;
     }
   
 .option:hover {
@@ -157,7 +182,7 @@ footer{
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 2rem;
+      margin-top: 1rem;
       width: 100%;
       gap: 10px;
       padding: 0px 10px;

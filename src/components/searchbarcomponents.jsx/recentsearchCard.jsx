@@ -1,6 +1,6 @@
 import ProfileCard from "../profileCard"
 import React, { useState, useEffect } from 'react';
-
+import Messenger from "../data/data";
 
 
 function RecentSearchCard(){

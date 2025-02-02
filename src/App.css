@@ -146,24 +146,21 @@
   justify-content: center;
 }
 .storyCard{
-  width: 140px;
+  width: 135px;
   height: 200px;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
   background-color: lightblue;
 }
 .story-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
-  background-color: transparent;
+  max-width: 300px;
+  width: 100%;
+  padding-left: 10px;
   gap: 10px;
-  width: fit-content;
-  box-sizing: border-box;
-  padding-left: 5px;
-
 }
 .main-story{
   display: flex;
@@ -201,14 +198,18 @@
   justify-content: center;
 }
 .username{
-  position: absolute;
-  left: 0;
-  bottom: 0;
   bottom: calc(0% + 10px);
   left: calc(0% + 10px);
   z-index: 2;
 }
-
+.storyC_username{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  bottom: calc(0% + 10px);
+  left: calc(0% + 10px);
+  z-index: 2;
+}
 .fa-arrow-left{
   font-size: 1.1rem;
 }
@@ -362,25 +363,6 @@
 .muFriendcounter{
   font-size: 11px;
 }
-.chatting{
-  background-color: black;
-  max-width: 320px;
-  min-width: 300px;
-  height: 70vh;
-  max-height: 100vh;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: start;
-  justify-content: start;
-  overflow: hidden;
-  box-sizing: border-box;
-}
 .chatProfile{
   background-color: rgb(0, 0, 0);
   max-width: 320px;
@@ -430,39 +412,49 @@
 .top-layer{
   display: flex;
   gap: 5px;
-  margin-top: 1rem;
+  padding-top: 1rem;
   align-items: center;
   box-sizing: border-box;
-  padding-left: 5px;
+  z-index: 10;
+  background-color: black;
 }
-.msg{
+.bottom-layer {
   display: flex;
-  align-items: end;
-  margin: 0px 5px ;
-  box-sizing: border-box;
-}
-.bottom-layer{
-  display: flex;
-  position: absolute;
+  background-color: black;
   bottom: 0;
   gap: 6px;
-  margin: 0px 5px;
   margin-bottom: 1rem;
   box-sizing: border-box;
-
-
+  width:calc(100% - 5px);
 }
 .user-detail-div{
   display: flex;
   align-items: center;
   gap: 5px;
 }
-.user-detail{
+.user-detail {
   display: flex;
   flex-direction: column;
+  width: 60px;
   gap: 5px;
   color: white;
+  font-size: 0.8rem;
 }
+#user-detail-name{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* js approch */
+/* const maxLength = 20; // Set the character limit
+    const userNameElement = document.getElementById('user-detail-name');
+    const originalText = userNameElement.textContent;
+
+    // Truncate text and add a dash
+    if (originalText.length > maxLength) {
+      userNameElement.textContent = originalText.slice(0, maxLength) + '-';
+    } */
 .hovering{
   height: 40px;
   width: 40px;
@@ -522,6 +514,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  
 }
 .note-card{
   position: relative;
@@ -869,4 +862,107 @@
 .lastmsg{
   font-size: .9rem;
   color: grey;
+}
+.bottom-layer-input{
+  width: 100%;
+  box-sizing: border-box;
+}
+.input-div{
+  display: flex;
+  align-items: center;
+  background-color:transparent;
+  width: 100%;
+  position: relative;
+}
+.input-div>input{
+  border-radius: 25px;
+  background-color: rgb(34, 30, 30);
+  width: 100%;
+  padding-left: 10px;
+}
+.input-div-icon{
+  position: absolute;
+  right: 0;
+  padding-right: 5px;
+}
+.ic{
+  color: #1d72fa;
+}
+.msg-box{
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+
+}
+.time-div{
+  font-size: .6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.msg-div{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width:100%;
+  margin-top: auto;
+}
+.msg-text{
+
+  padding: 8px 10px;
+  border-radius: 15px;
+}
+.bgColor_blue{
+  background-color:#1d72fa ;
+}
+.bgColor_grey{
+  background-color: #221E1E;
+}
+.incoming{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.outgoing{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+  max-height: 55vh;
+  gap: 5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+  width: 280px;
+  scrollbar-width: none;
+}
+
+.chatting{
+  background-color: black;
+  max-width: 300px;
+  min-width: 300px;
+  max-height: 70vh;
+  height: 100vh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: visible;
+  padding-left: 7px;
+}
+.msg-bottom-layer{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

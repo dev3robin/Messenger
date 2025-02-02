@@ -1,31 +1,33 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import ProfileCard from "./profileCard";
-
+import Messenger from "./data/data";
+import { UserD } from "./contextApi/user";
 function NoteCard(){
-      const [userData, setUserData] =useState([]);
-      useEffect(() => {
-        const storedUserData = localStorage.getItem('userData');
-        if (storedUserData) {
-          setUserData(JSON.parse(storedUserData));
-        }
-      }, []);
+      const { User } = useContext(UserD);
+      function getUserDataById(userId) {
+            const users=Object.values(Messenger).map(user=>{
+              return user
+            })
+            return users.find(user => user.userId === userId); // Locate the user by userId
+          }
       return (
             <div className="note-card">
-                  {userData
-                  .filter(user => user.noteInfo.hasNotes === true)
-                  .map(user => (
-                        <div key={user.id} className="note-item">
-                              <span className="note">{user.noteInfo.note}</span>
-                              <span className="noteC-profile">
-                                    <ProfileCard  npm run dev
-                                          size={user.story ? "50px" : "62px"}
-                                          avatar={user.avatar}
-                                          story={user.story} 
-                                    />
-                              </span>
-                              <span className="noteC-username">{user.username}</span>
-                        </div>
-                  ))}
+                  {User.friends.map(friend => { 
+                        const userData = getUserDataById(friend.userId); 
+                        if (!userData || !userData.noteInfo.hasNotes) return null;
+                              return (
+                                    <div key={userData.noteInfo.noteId} className="note-item">
+                                          <span className="note">{userData.noteInfo.noteContent}</span>
+                                          <span className="noteC-profile">
+                                                <ProfileCard
+                                                      size={"55px"}
+                                                      avatar={userData.photos.profile}
+                                                      story={userData.story} 
+                                                />
+                                          </span>
+                                          <span className="noteC-username">{userData.userName}</span>
+                                    </div>
+                              )})}
 
             </div>
       )
