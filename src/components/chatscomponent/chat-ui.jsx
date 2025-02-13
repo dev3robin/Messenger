@@ -3,34 +3,37 @@ import ReactDOM from "react-dom";
 import ProfileCard from "../profileCard"
 import ChatProfile from "./chatProfile";
 import { InputIsFocused, InputIsNotFocused } from "./chats-input";
-import { UserD } from "../contextApi/user";
-// import chatHistory from "../data/chatHistory";
+import { LoggedUser } from "../contextApi/user";
+import {SelectedChat} from "../contextApi/selectedChat";
+import { IsChatting } from "./chattingStatus";
 
-function Chatting(props){
-      const {isChatting,setIsChatting,chatData}=props
-      const { User, setUser } = useContext(UserD);
+
+function Chatting(){
+      const {isChatting, setIsChatting}=useContext(IsChatting)
+      const {selectedChat}=useContext(SelectedChat)
+      const { loggedUser } = useContext(LoggedUser);
       const [isChatProfile,setIsChatProfile]=useState(false)
       const [isInputFocused,setInputFocused]=useState(false)
       const [newMessage,setNewMessage]=useState('')
       const [selectedIndex, setSelectedIndex] = useState(null);
+
       const [chatHistory, setChatHistory] = useState(
             JSON.parse(localStorage.getItem("chatHistory")) || {}
           );
 
-      const loggedUserName=User.userName;
-      const selectedUserName=chatData.userName;
-      const logUserId=User.userId
-      
-      function CovnName(loggedUserName, selectedUserName){
+      const loggedUserName=loggedUser.userName;
+      const selectedUserName=selectedChat.userName;
+      const logUserId=loggedUser.userId
+      function CovnName(loggedUserName, selectedUserName) {
             const user1 = loggedUserName.trim().split(" ");
-            const user2 =selectedUserName.trim().split(" ");
-
+            const user2 = selectedUserName.trim().split(" ");
+        
             const lastName1 = user1[user1.length - 1];
             const lastName2 = user2[user2.length - 1];
-            
+        
             const sortedNames = [lastName1, lastName2].sort();
             return sortedNames.join("-");
-      }
+          }
       const conName = CovnName(loggedUserName,selectedUserName)
       const conversation=chatHistory[conName]
       //scroll when new msg added
@@ -44,10 +47,7 @@ function Chatting(props){
             const handleStorageChange = () => {
               setChatHistory(JSON.parse(localStorage.getItem("chatHistory")) || {});
             };
-        
-            // Add event listener for storage changes
             window.addEventListener("storage", handleStorageChange);
-        
             return () => {
               window.removeEventListener("storage", handleStorageChange);
             };
@@ -72,7 +72,7 @@ function Chatting(props){
             setIsChatProfile(true)
       }
       return <>
-                  {ReactDOM.createPortal(
+            {ReactDOM.createPortal(
                   <div className={"chatting "+(isChatting? "visible":'')}>
                         <div className="top-layer">
                               <div className="return-btn hovering">
@@ -81,9 +81,9 @@ function Chatting(props){
                                     </button>
                               </div>
                               <div className="user-detail-div" onClick={handleChatProfile}>
-                                    <ProfileCard size='40px' avatar={chatData?.photos.profile}/>
+                                    <ProfileCard size='40px' avatar={selectedChat?.photos.profile}/>
                                     <div className="user-detail">
-                                          <span id="user-detail-name">{chatData?.userName}</span>
+                                          <span id="user-detail-name">{selectedChat?.userName}</span>
                                           <span>last active</span>
                                     </div>
                               </div>
@@ -116,8 +116,8 @@ function Chatting(props){
                                           newMessage={newMessage}
                                           setNewMessage={setNewMessage}
                                           conName={conName}
-                                          User={User}
-                                          chatData={chatData}
+                                          loggedUser={loggedUser}
+                                          selectedChat={selectedChat}
                                           ConName={conName}
                                           addNewMessage={addNewMessage}
                                     />
@@ -135,8 +135,6 @@ function Chatting(props){
                   <ChatProfile 
                         isChatProfile={isChatProfile}
                         setIsChatProfile={setIsChatProfile}
-                        chatData={chatData}
-                  
                   />
 
             }

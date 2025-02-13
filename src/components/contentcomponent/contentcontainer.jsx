@@ -11,9 +11,7 @@ function ContentContainer(props){
             <div className="content-section" >
                   {isChatActive ? <ChatContent /> : <StoryCard />}
                   {isProfileNav &&
-                        <ProfileNav 
-                              // chatData={selectedChat}
-                        />
+                        <ProfileNav />
                   }
             </div>
             

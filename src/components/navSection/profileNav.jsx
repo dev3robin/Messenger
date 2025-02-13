@@ -2,12 +2,12 @@ import ReactDOM from "react-dom";
 import ProfileCard from "../profileCard";
 import { useContext, useRef, useEffect, useState } from "react";
 import { ProfileNavContext } from "../contextApi/profileNavContext";
-import { UserD } from "../contextApi/user";
+import { LoggedUser } from "../contextApi/user";
 import AccountSection from "./accountSection";
 function ProfileNav() {
   const { isProfileNav, setProfileNav } = useContext(ProfileNavContext);
   const profileNavRef = useRef(null);
-  const { User } = useContext(UserD);
+  const { loggedUser } = useContext(LoggedUser);
   const [isSettingsPortalOpen, setSettingsPortalOpen] = useState(false); // State to handle the new portal visibility
 
   useEffect(() => {
@@ -45,9 +45,9 @@ function ProfileNav() {
             <div className="account-section">
               <div className="ac-left-part">
                 <div>
-                  <ProfileCard size="40px" avatar={User?.photos.profile} />
+                  <ProfileCard size="40px" avatar={loggedUser?.photos.profile} />
                 </div>
-                <div>{User?.userName}</div>
+                <div>{loggedUser?.userName}</div>
                 <span>
                   <i className="fa-solid fa-angle-down"></i>
                 </span>

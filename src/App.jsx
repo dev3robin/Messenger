@@ -1,26 +1,29 @@
 import './App.css';
 import './components/login/login.css';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 
-import { UserD } from './components/contextApi/user';
+import LoggedUserInfoProvider from './components/contextApi/user';
 import ProfileNavProvider from './components/contextApi/profileNavContext';
 import LoginInfoProvider from './components/contextApi/loginInfo';
 import { LoaderProvider } from './components/loaderComponent/loaderContext';
 import MainContent from './main-content';
-
+import SelectedChatProvider from './components/contextApi/selectedChat';
+import IsChattingProvider from './components/chatscomponent/chattingStatus';
 
 function App() {
   const [isChatActive, setChatActive] = useState(true);
-  const [User, setUser] = useState([]);
-
   return (
     <LoaderProvider>
       <LoginInfoProvider>
-        <UserD.Provider value={{ User, setUser }}>
-          <ProfileNavProvider>
-            <MainContent isChatActive={isChatActive} setChatActive={setChatActive} />
-          </ProfileNavProvider>
-        </UserD.Provider>
+        <LoggedUserInfoProvider>
+          <SelectedChatProvider>
+            <ProfileNavProvider>
+              <IsChattingProvider>
+                <MainContent isChatActive={isChatActive} setChatActive={setChatActive} />
+              </IsChattingProvider>
+            </ProfileNavProvider>
+          </SelectedChatProvider>
+        </LoggedUserInfoProvider>
       </LoginInfoProvider>
     </LoaderProvider> 
   );

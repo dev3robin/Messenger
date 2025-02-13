@@ -2,13 +2,13 @@ import ReactDOM from "react-dom";
 import { React,useEffect,useContext, useState } from "react";
 import "../navSection/as-css.css";
 import ProfileCard from "../profileCard";
-import { UserD } from "../contextApi/user";
+import { LoggedUser } from "../contextApi/user";
 import { LoginInfo } from "../contextApi/loginInfo";
 import { LoaderContext } from "../loaderComponent/loaderContext";
 import Loader from "../loaderComponent/loader";
 const AccountSection = (props) => {
   const { setSettingsPortalOpen, setProfileNav } = props;
-  const { User } = useContext(UserD);
+  const { loggedUser } = useContext(LoggedUser);
   const [logOutPortal, setLogOutPortal] = useState(false);
   const { isLogin, setLogin } = useContext(LoginInfo);
   const { isLoading, showLoader, hideLoader } = useContext(LoaderContext);
@@ -48,11 +48,11 @@ const AccountSection = (props) => {
       <div className="accounts">
         <div className="loggedUserDiv" onClick={handleLoggedUserClick}>
           <div className="profileImg">
-            <ProfileCard size="40px" avatar={User.photos.profile} />
+            <ProfileCard size="40px" avatar={loggedUser.photos.profile} />
           </div>
           <div className="userDetails">
-            <div>{User.userName}</div>
-            <div>signed in . {User.userName}</div>
+            <div>{loggedUser.userName}</div>
+            <div>signed in . {loggedUser.userName}</div>
           </div>
           <div>
             <i className="fa-solid fa-check"></i>

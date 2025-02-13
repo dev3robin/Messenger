@@ -1,13 +1,12 @@
 import { useState, useEffect, useContext } from "react";
-import { UserD } from "../contextApi/user";
+import { LoggedUser } from "../contextApi/user";
 import Messenger from "../data/data";
 import { LoginInfo } from "../contextApi/loginInfo";
 
 function LoginCard(props) {
   const { isLogin, setLogin } = useContext(LoginInfo);
   const { handleEmailChange, handlePasswordChange, email, password, setSignUp } = props;
-  const { User, setUser } = useContext(UserD);
-
+  const { setLoggedUser } = useContext(LoggedUser);
   // State to manage selected language
   const [selectedLanguage, setSelectedLanguage] = useState("Language");
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -23,7 +22,7 @@ function LoginCard(props) {
       user => user.userInfo.email === email && user.userInfo.password === password
     );
     if (user) {
-      setUser(user);
+      setLoggedUser(user);
       setLogin(true);
     } else {
       console.log(false);
@@ -31,7 +30,7 @@ function LoginCard(props) {
     handleEmailChange({ target: { value: "" } });
     handlePasswordChange({ target: { value: "" } });
   }
-
+  
   return (
     <>
       <header>
@@ -58,7 +57,7 @@ function LoginCard(props) {
           <input type="radio" />
           <span>Save login info</span>
         </div>
-        <button type="submit" className="login-btn sbtn">Log In</button>
+        <button type="submit"className="login-btn sbtn">Log In</button>
         <button className="recoverpass-btn sbtn">Forgot Password?</button>
       </form>
 

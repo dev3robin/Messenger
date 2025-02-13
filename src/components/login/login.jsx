@@ -4,7 +4,6 @@ import LoginCard from "./loginCard";
 import SignupCard from "./signupCard";
 import { LoginInfo } from "../contextApi/loginInfo";
 function Login() {
-  const {isLogin,setLogin}=useContext(LoginInfo)
   const [userName,setUserName]=useState("")
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

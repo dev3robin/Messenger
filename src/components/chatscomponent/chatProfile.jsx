@@ -1,7 +1,10 @@
 import ReactDOM from "react-dom";
 import ProfileCard from "../profileCard";
+import { useContext } from "react";
+import { SelectedChat } from "../contextApi/selectedChat";
 function ChatProfile(props){
-      const {chatData,setIsChatProfile}=props
+      const {setIsChatProfile}=props
+      const{selectedChat}=useContext(SelectedChat)
       function handleCloseChatProfile(){
             setIsChatProfile(false)
       }
@@ -14,8 +17,8 @@ function ChatProfile(props){
                   <div className="cp-details">
                         <div className="chatProfile-section">
                               <div className="userProfile">
-                                    <ProfileCard size="80px" avatar={chatData.photos.profile}/>
-                                    <div className="userName">{chatData.userName}</div>
+                                    <ProfileCard size="80px" avatar={selectedChat.photos.profile}/>
+                                    <div className="userName">{selectedChat.userName}</div>
                                     <button className="encryptBtn">
                                           <i class="fa-sharp fa-solid fa-lock"></i>
                                           <span>End-to-end encryption</span>

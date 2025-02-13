@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
+import { SelectedChat } from '../contextApi/selectedChat';
 export const InputIsFocused = (props) => {
-  const { setInputFocused, newMessage,setNewMessage,User,addNewMessage,chatData,ConName } = props;
+  const { setInputFocused, newMessage,setNewMessage,loggedUser,addNewMessage } = props;
   const inputRef1 = useRef(null);
+  const{selectedChat}=useContext(SelectedChat)
   useEffect(() => {
     if (inputRef1.current) {
       inputRef1.current.focus();
@@ -37,7 +39,7 @@ export const InputIsFocused = (props) => {
   function handleMsg(){
     const now = new Date();
     const CT= now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
-    const msgObj=createMessageObj(generateRandomString(5),newMessage,User.userId,chatData.userId,CT)
+    const msgObj=createMessageObj(generateRandomString(5),newMessage,loggedUser.userId,selectedChat.userId,CT)
     addNewMessage(msgObj)
     setNewMessage("")
   };
@@ -84,7 +86,9 @@ export const InputIsNotFocused = (props) => {
               type="text"
               placeholder="Message"
               onFocus={() => {
-              setInputFocused(true);
+                if (setInputFocused) {
+                  setInputFocused(true);
+                }
               }}
             />
             <div className="input-div-icon"><i class="fa-solid fa-face-smile ic"></i></div>

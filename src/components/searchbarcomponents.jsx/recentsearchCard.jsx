@@ -1,28 +1,21 @@
 import ProfileCard from "../profileCard"
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Messenger from "../data/data";
 
 
 function RecentSearchCard(){
-      const [userData, setUserData] = useState([]);
-      useEffect(() => {
-        const storedUserData = localStorage.getItem('userData');
-        if (storedUserData) {
-          setUserData(JSON.parse(storedUserData));
-        }
-      }, []);
       return (
             <div className="rs-container">
-                  {userData.map((user,index) =>{
+                  {Object.values(Messenger).map((user,index) =>{
                         if(index<8){
                         return(
-                              <div className="rsCard" key={user.id}>
+                              <div className="rsCard" key={user.userId}>
                                     <ProfileCard
                                           size={user.story ? "40px" : "52px"}
-                                          avatar={user.avatar}
+                                          avatar={user.photos.profile}
                                           story={user.story}
                                     />
-                                    <span>{user.username}</span>
+                                    <div  className="rsUN"><span>{user.userName}</span></div>
                               </div>
                         )
                   }})}

@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ProfileCard from "../profileCard"
+import Messenger from '../data/data';
 function SuggestedUserCard(){
-      const [userData, setUserData] = useState([]);
-      useEffect(() => {
-        const storedUserData = localStorage.getItem('userData');
-        if (storedUserData) {
-          setUserData(JSON.parse(storedUserData));
-        }
-      }, []);
       return (
             <div className="su-container">
-                  {userData.map(user =>{
+                  {Object.values(Messenger).map(user =>{
                         return(
-                              <div className="suCard" key={user.id}>
+                              <div className="suCard" key={user.userId}>
                                     <ProfileCard 
                                           size={user.story ? "40px" : "52px"}
-                                          avatar={user.avatar}
+                                          avatar={user.photos.profile}
                                           story={user.story}
                                     />
-                                    <span>{user.username}</span>
+                                    <span>{user.userName}</span>
                               </div>
                         )
                   })}

@@ -1,15 +1,16 @@
 import { useState,useEffect,useContext } from "react";
 import ProfileCard from "./profileCard";
 import Messenger from "./data/data";
-import { UserD } from "./contextApi/user";
+import { LoggedUser } from "./contextApi/user";
 function NoteCard(){
-      const { User } = useContext(UserD);
+      const { User } = useContext(LoggedUser);
       function getUserDataById(userId) {
             const users=Object.values(Messenger).map(user=>{
               return user
             })
             return users.find(user => user.userId === userId); // Locate the user by userId
           }
+      if (!User || !User.friends) return null; 
       return (
             <div className="note-card">
                   {User.friends.map(friend => { 
