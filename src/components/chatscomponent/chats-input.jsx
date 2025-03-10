@@ -54,6 +54,13 @@ export const InputIsFocused = (props) => {
             ref={inputRef1}
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                if (newMessage.trim() !== '') {
+                  handleMsg();
+                }
+              }
+            }}
             type="text"
             placeholder="Message..."
           />
