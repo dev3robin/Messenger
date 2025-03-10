@@ -157,7 +157,7 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  max-width: 300px;
+  max-width: 280px;
   width: 100%;
   padding-left: 10px;
   gap: 10px;
@@ -172,7 +172,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(126, 157, 192, 0.5);
+  /* background-color: rgba(126, 157, 192, 0.5); */
   
 }
 .prfile-div{
@@ -208,6 +208,12 @@
   left: 0;
   bottom: calc(0% + 10px);
   left: calc(0% + 10px);
+  z-index: 2;
+}
+.addStory{
+  position: absolute;
+  bottom: calc(0% + 10px);
+  right: calc(0% + 10px);
   z-index: 2;
 }
 .fa-arrow-left{

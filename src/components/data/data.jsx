@@ -12,7 +12,7 @@ const Messenger = {
        cover: [],
        album: [],
      },
-     storyInfo: { isStory: false, stories: [10,11,2]},
+     storyInfo: { isStory: true, stories: [faker.image.avatar()]},
      noteInfo: {
        noteId: "note1",
        hasNotes:true,
@@ -130,7 +130,7 @@ const Messenger = {
     },
      storyInfo: {
        isStory: true,
-       stories: [faker.image.avatar()],
+       stories: [faker.image.avatar(),faker.image.avatar(),faker.image.avatar(),faker.image.avatar()],
      },
      noteInfo: {
        noteId: "note3",
@@ -354,7 +354,7 @@ const Messenger = {
       cover: [],
       album: [],
     },
-     storyInfo: { isStory: true, stories: [faker.image.avatar()] },
+     storyInfo: { isStory: true, stories: [faker.image.avatar(),faker.image.avatar(),faker.image.avatar()] },
      noteInfo: { 
       noteId: "note7",
       hasNotes:true,

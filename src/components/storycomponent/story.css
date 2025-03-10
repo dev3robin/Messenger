@@ -1,0 +1,348 @@
+
+.storyG {
+   position: absolute;
+   background: linear-gradient(to top, rgba(72, 72, 72, 0.1), rgba(0, 0, 0, 1));
+   height: 70vh;
+   max-width: 300px;
+   width: 100%;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   transition: box-shadow 0.3s ease;
+}
+.topNav{
+   position: absolute;
+   background-color: transparent;
+   height: 10%;
+   width: 100%;
+   top: 0;
+   z-index: 20;
+   display: flex;
+   justify-content: space-between;
+
+}
+.proInfo{
+   display: flex;
+   gap: 10px;
+   align-items: center;
+   justify-content: center;
+   padding-left: 10px;
+   color: white;
+}
+.proButton{
+   display: flex;
+   gap: 15px;
+   align-items: center;
+   padding-right: 10px;
+}
+.fa-solid{
+   color: white;
+   font-size: 20px;
+}
+.stories{
+   background-color: grey;
+   height: 100%;
+   width: 100%;
+   position: absolute;
+   align-items: center;
+   display: flex;
+}
+.bottomNav{
+   position: absolute;
+   height: fit-content;
+   width: 100%;
+   bottom: calc(0% + 20px);
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   color: white;
+   padding: 8px 0px;
+
+}
+
+.bottomNav input{
+   background-color: rgba(0, 0, 0, 0.1);
+   border: none;
+   outline: none;
+   border-radius: 10px;
+   margin-left: 20px;
+   padding: 5px ;
+   color: white;
+   z-index: 10;
+}
+.stories {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 0;
+
+ }
+ .stories::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 40%, transparent 60%, rgba(0, 0, 0, 0.5));
+   z-index: 1;
+   pointer-events: none;
+}
+ .stories img {
+   width: 100%;
+   max-height: 500px;
+   object-fit: cover;
+ }
+ 
+ .prev, .next {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   background: transparent;
+   color: transparent;
+   border: none;
+   padding: 10px 15px;
+   cursor: pointer;
+   font-size: 18px;
+   z-index: 10;
+   width: 50%;
+   height: 100%;
+ }
+ 
+ .prev { left: 10px; }
+ .next { right: 10px; }
+ 
+
+ .progress-bar-container {
+   display: flex;
+   justify-content: space-between;
+   width: calc(100% - 10px);
+   position: absolute;
+   top: 2px;
+   left: 0;
+   gap: 2px;
+   padding: 0px 5px;
+   z-index: 5;
+ }
+ 
+ .progress-bar {
+   flex: 1;
+   height: 4px;
+
+   background-color: grey;
+   border-radius: 4px;
+   position: relative;
+   overflow: hidden;
+ }
+ 
+ .progress-bar.active::after {
+   content: "";
+   position: absolute;
+   height: 100%;
+   width: 100%;
+   background-color: white;
+   animation: progress 4s linear forwards;
+ }
+ 
+ @keyframes progress {
+   from { width: 0%; }
+   to { width: 100%; }
+ }
+ 
+ 
+ .closeBtn{
+   background-color: transparent;
+   border: none;
+   outline: none;
+   z-index: 10;
+
+ }
+
+
+/* storyupload */
+.storyUp{
+   position: absolute;
+   background-color: black;
+   height: 70vh;
+   max-width: 300px;
+   width: 100%;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%,-50%);
+   color: white;
+   transition: opacity 1s ease, transform 0.3s ease;
+}
+
+.tNav{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 20px 10px;
+
+}
+.tNav>div{
+   display: flex;
+   gap: 20px;
+   
+}
+.options{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+   padding: 0px 10px;
+}
+.options>div{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   background-color: rgb(96, 85, 85,0.2);
+   height: 50%;
+   width: 50%;
+   padding: 30px;
+   gap: 10px;
+   border-radius: 10px;
+}
+.reBtn{
+   background-color: transparent;
+   border: none;
+
+}
+.gallery{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 20px;
+}
+.gallery input{
+   background-color: red;
+
+}
+.gallery input::placeholder{
+   color: white;
+}
+
+
+
+
+/* custom file input */
+.custom-button {
+   width:calc(100% - 100px);
+   height: 46px;
+   line-height: 46px;
+   font-family: Arial, sans-serif;
+   font-size: 18px;
+   color: #FFF;
+   text-align: center;
+   border: none;
+   cursor: pointer;
+   padding: 0 10px;
+   background-color: #216ecb;
+   position: relative;
+   margin-top: 20px;
+   border-radius: 25px;
+   left:50%;
+   transform: translate(-50%);
+ }
+ .custom-button:hover{
+   background-color: #025390;
+ }
+ .import-field {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+   cursor: pointer;
+ }
+
+ /* Preview Window */
+.preview-window {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   height: 70vh;
+   width: 100%;
+   max-width: 300px;
+   transform: translate(-50%, -50%);
+   border-radius: 10px;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+   z-index: 100;
+   background-color: black;
+ }
+ 
+ .preview-window img {
+   max-width: 100%;
+   height: auto;
+   display: block;
+ }
+ 
+ .preview-window button {
+   margin-top: 10px;
+   padding:12px;
+   background-color: rgb(45, 45, 45,0.5);
+   color: white;
+   border: none;
+   cursor: pointer;
+   border-radius: 50%;
+ }
+.top{
+   display: flex;
+   align-items: start;
+   justify-content: space-between;
+   position: absolute;
+   padding: 0px 10px;
+   width: calc(100% - 20px);
+}
+
+ .settings{
+   display: flex;
+   flex-direction: column;
+   width: fit-content;
+   position: relative;
+   right: 0;
+   top: 0;
+ }
+ .bottom{
+   display: flex;
+   align-items: start;
+   justify-content: space-between;
+   position: absolute;
+   bottom: 0;
+   padding: 0px 10px;
+   width: calc(100% - 30px);
+   margin-bottom: 20px;
+
+ }
+ .settingsIcon{
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   background:none !important;
+   border-radius: none  !important;
+   padding: 0 !important;
+ }
+ .send{
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   border-radius: 25px !important;
+   background: rgb(17, 103, 231) !important;
+   position: absolute;
+   right: 0;
+ }
+
+ .preview-img{
+   height: 70vh;
+   width: 100%;
+   display: flex;
+   align-items: center;
+ }
+ .preview-img img{
+   height: fit-content;
+   width: fit-content;
+
+ }
